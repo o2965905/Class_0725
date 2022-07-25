@@ -1,5 +1,5 @@
 <!-- API課程 -->
-<!-- 原始data -->
+<!-- 外部引入js -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +19,8 @@
 </head>
 
 <body>
+    <!-- include js -->
+    <script src="./js/data.js"></script>
 
     <!-- js jq bs -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -34,22 +36,6 @@
     <script>
         $(document).ready(function () {
 
-            let data = [{
-                    'id': 1,
-                    'name': '奶茶',
-                    'price': 100,
-                },
-                {
-                    'id': 2,
-                    'name': '紅茶',
-                    'price': 50,
-                }, {
-                    'id': 3,
-                    'name': '綠茶',
-                    'price': 20,
-                }
-            ];
-            
             console.log('data',data);
 
         });
