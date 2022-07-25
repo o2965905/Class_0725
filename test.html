@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        /* 這邊是我的nav css而已沒意義XD */
+        .header {
+            width: 100%;
+            height: 50px;
+            box-shadow: 0 0px 10px rgba(211, 211, 211, 0.411);
+            background-color: rgb(255, 222, 222);
+            line-height: 50px;
+            padding: 0 20px;
+            top: 0;
+            position: sticky;
+            color: #fff;
+            font-weight: bolder;
+            font-size: 24px;
+            z-index: 100;
+        }
+
+        .content {
+            width: 100%;
+            /* height: 200vh; */
+        }
+
+        .conAll {
+            width: 100%;
+            height: 500px;
+            /* 要滑入的上一層做relative */
+            position: relative;
+        }
+
+        .con1,
+        .con3 {
+            background-color: #fff;
+        }
+
+        .con2,
+        .con4 {
+            background-color: rgb(233, 233, 233);
+        }
+
+        p {
+            /* 要滑入的那層做absolute */
+            position: absolute;
+            margin: 30px;
+            /* 先做隱藏 */
+            display: none;
+            font-size: 36px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        LOGO
+    </div>
+    <div class="content">
+        <div class="con1 conAll">
+
+        </div>
+        <div class="con2 conAll">
+            <!-- 我要做動畫的P -->
+            <p>我會飄喔~</p>
+        </div>
+        <div class="con3 conAll">
+
+        </div>
+        <div class="con4 conAll">
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer">
+    </script>
+</body>
+
+<script>
+    // 瀏覽器滑動觸發事件
+    $(document).scroll(function () {
+
+        // console.log($(document).scrollTop());
+
+        // 如果滑動到的位置超過 100px 但小於130px
+        if ($(document).scrollTop() > 100 && $(document).scrollTop() < 130) {
+
+
+            // 顯示這個p
+            $('p').show()
+            // p加入動畫效果 從左邊開始300px 2000秒
+            $('p').animate({
+                left: '300px'
+            }, 2000)
+            // p加入動畫效果 從左邊開始-50px 2000秒
+            $('p').animate({
+                left: '-10px'
+            }, 2000)
+
+        } 
+
+    })
+</script>
+
+</html>
