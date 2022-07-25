@@ -1,5 +1,5 @@
 <!-- API教學 -->
-<!-- 小練習:btn.click => 抓API資訊 -->
+<!-- 範例 : 抓觀光工廠資料 -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +21,7 @@
     <!-- container -->
     <div class="container" id="mycontainer">
         <br>
-        <button type="button" id="myBtn" class="btn btn-info">按我</button>
+        <button type="button" id="myBtn" class="btn btn-warning">按我</button>
 
         <!-- <div class="alert alert-success alert-dismissible mt-5 ">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -35,7 +35,21 @@
             </p>
           </div> -->
     </div>
-    <p id="myP"></p>
+    <div class="container">
+        <table class="table table-light table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>地區</th>
+                    <th>名字</th>
+                    <th>網址</th>
+                </tr>
+            </thead>
+            <tbody id="myTbody">
+              
+            </tbody>
+        </table>
+    </div>
 
     <!-- js jq bs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
@@ -54,38 +68,38 @@
     <script>
         $(document).ready(function () {
 
-            const myP = $('#myP');
             const mycontainer = $('#mycontainer');
             const myBtn = $('#myBtn');
 
-
             myBtn.click(function () {
+                axios.get("./js/190902112139_M4.json")//使用 axios 抓 API 資料
+                    .then(function (res) { //成功後要做的事
 
-                $(this).next('div').remove();//每次刷新頁面都先remove舊資料
+                        console.log('res',res);
 
-                
-                axios.get("API網址")//使用 axios 抓 API 資料
+                        let data = res.data;
+                        // console.log(data);
+                        // console.log('data[1]', data[0]);
+                        // console.log('data[1]', data[1]);
 
-                    .then(function (response) { //成功後要做的事
+                        let dataText = '';
+                        data.forEach(myFunction);
+                        // // document.getElementById("demo").innerHTML = text;
+                        function myFunction(item, index) {
+                            // console.log(`<p>${item.id}-${item.name}-${item.web}</p><br>`);
+                            
+                            dataText += `
+                                    <tr>
+                                        <td>${item.id}</td>
+                                        <td class="text-danger">${item.area}</td>
+                                        <td>${item.name}</td>
+                                        <td class="text-info">${item.web}</td>
+                                    </tr>              
+                                    `;
+                            }
 
-                        let axiosData = response.data;
-                        console.log('axios', axiosData);
-                        console.log('myBtn');
-
-                        let greenText =
-                            `<div class="alert alert-success alert-dismissible mt-5">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                    <strong>Success!</strong>
-                                <p>
-                                    city =>${axiosData.city},<br>
-                                    region =>${axiosData.region},<br>
-                                    ip =>${axiosData.ip},<br>
-                                    country =>${axiosData.country},<br>
-                                    timezone =>${axiosData.timezone}<br>
-                                </p>
-                            </div>`;
-
-                        mycontainer.append(greenText);
+                        const myDiv = $('#myTbody');
+                        myDiv.append(dataText);
 
                     })
                     .catch(function (error) { //失敗後要做的事
@@ -106,11 +120,6 @@
 
                     })
             })
-
-
-            // 小練習 : btn.click => 抓API資訊
-            // 小練習 : btn.click => 顯示出 ip,city,...等資料
-            // 小練習 : btn.click => 成功 alert / 失敗 alert
 
         });
     </script>
