@@ -9,4 +9,5 @@
 ***
 #### 連接API方式
 + [API 初階教學 : 連接外部API](072505.html)
-+ [API 初階教學 : 顯示API內容](072506.html)
++ [API 初階教學 : 顯示API內容(fetch)](072506.html)
++ [API 初階教學 : 顯示API內容(AJAX)](072507.html)
