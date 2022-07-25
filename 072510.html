@@ -21,24 +21,17 @@
     <!-- container -->
     <div class="container" id="mycontainer">
         <br>
-        <button type="button" id="myBtn" class="btn btn-warning">按我</button>
-
-        <!-- <div class="alert alert-success alert-dismissible mt-5 ">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Success!</strong>
-            <p>
-                city =>city,<br>
-                region =>region,<br>
-                ip =>ip,<br>
-                country =>country,<br>
-                timezone =>timezone<br>
-            </p>
-          </div> -->
+        <button type="button" id="myBtn" class="btn btn-warning">全部資料</button>
+        <button type="button" id="areaBtn" class="btn btn-outline-success">北部</button>
+        <button type="button" id="areaBtn1" class="btn btn-outline-success">中部</button>
+        <button type="button" id="areaBtn2" class="btn btn-outline-success">南部</button>
+        <button type="button" id="areaBtn3" class="btn btn-outline-success">東部</button>
+        <button type="button" id="areaBtn4" class="btn btn-outline-success">離島</button>
     </div>
     <div class="container">
         <table class="table table-light table-hover">
             <thead>
-                <tr>
+                <tr class="bg-dark text-light">
                     <th>ID</th>
                     <th>地區</th>
                     <th>名字</th>
@@ -70,30 +63,201 @@
 
             const mycontainer = $('#mycontainer');
             const myBtn = $('#myBtn');
+            const areaBtn = $('#areaBtn');
+            const areaBtn1 = $('#areaBtn1');
+            const areaBtn2 = $('#areaBtn2');
+            const areaBtn3 = $('#areaBtn3');
+            const areaBtn4 = $('#areaBtn4');
+/*------------------------------------------------------------------------------------------------------------------------------------------*/ 
+            // areaBtn - 北部
+            areaBtn.click(function () {
+                console.log('areaBtn');
+                axios.get('./js/190902112139_M4.json')
+                    .then(function (res) {
+                        console.log('res', res);
+                        let data = res.data;
+                        let dataText = '';
+                        data.forEach(myFunction);
 
+                        function myFunction(item, index) {
+                            // console.log(`<p>${item.id}-${item.name}-${item.web}</p><br>`);
+                            if (item.area == '北部') {
+                                dataText += `
+                                    <tr>
+                                        <td>${item.id}</td>
+                                        <td class="text-danger">${item.area}</td>
+                                        <td>${item.name}</td>
+                                        <td class="text-info"><a href="http://${item.web}" class="btn btn-info" role="button">Go</a></td>
+                                    </tr>              
+                                    `;
+                            }
+                        }
+                        const myTbody = $('#myTbody');
+                        myTbody.append(dataText);
+
+
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+                    .then(function () {});
+            })
+/*------------------------------------------------------------------------------------------------------------------------------------------*/
+            // areaBtn1 - 中部
+            areaBtn1.click(function () {
+                console.log('areaBtn1');
+                axios.get('./js/190902112139_M4.json')
+                    .then(function (res) {
+                        console.log('res', res);
+                        let data = res.data;
+                        let dataText = '';
+                        data.forEach(myFunction);
+
+                        function myFunction(item, index) {
+                            // console.log(`<p>${item.id}-${item.name}-${item.web}</p><br>`);
+                            if (item.area == '中部') {
+                                dataText += `
+                                    <tr>
+                                        <td>${item.id}</td>
+                                        <td class="text-danger">${item.area}</td>
+                                        <td>${item.name}</td>
+                                        <td class="text-info"><a href="http://${item.web}" class="btn btn-info" role="button">Go</a></td>
+                                    </tr>              
+                                    `;
+                            }
+                        }
+                        const myTbody = $('#myTbody');
+                        myTbody.append(dataText);
+
+
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+                    .then(function () {});
+            })
+/*------------------------------------------------------------------------------------------------------------------------------------------*/
+            // areaBtn2 - 南部
+            areaBtn2.click(function () {
+                console.log('areaBtn2');
+                axios.get('./js/190902112139_M4.json')
+                    .then(function (res) {
+                        console.log('res', res);
+                        let data = res.data;
+                        let dataText = '';
+                        data.forEach(myFunction);
+
+                        function myFunction(item, index) {
+                            // console.log(`<p>${item.id}-${item.name}-${item.web}</p><br>`);
+                            if (item.area == '南部') {
+                                dataText += `
+                                    <tr>
+                                        <td>${item.id}</td>
+                                        <td class="text-danger">${item.area}</td>
+                                        <td>${item.name}</td>
+                                        <td class="text-info"><a href="http://${item.web}" class="btn btn-info" role="button">Go</a></td>
+                                    </tr>              
+                                    `;
+                            }
+                        }
+                        const myTbody = $('#myTbody');
+                        myTbody.append(dataText);
+
+
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+                    .then(function () {});
+            })
+/*------------------------------------------------------------------------------------------------------------------------------------------*/
+            // areaBtn3 - 東部
+            areaBtn3.click(function () {
+                console.log('areaBtn3');
+                axios.get('./js/190902112139_M4.json')
+                    .then(function (res) {
+                        console.log('res', res);
+                        let data = res.data;
+                        let dataText = '';
+                        data.forEach(myFunction);
+
+                        function myFunction(item, index) {
+                            // console.log(`<p>${item.id}-${item.name}-${item.web}</p><br>`);
+                            if (item.area == '東部') {
+                                dataText += `
+                                    <tr>
+                                        <td>${item.id}</td>
+                                        <td class="text-danger">${item.area}</td>
+                                        <td>${item.name}</td>
+                                        <td class="text-info"><a href="http://${item.web}" class="btn btn-info" role="button">Go</a></td>
+                                    </tr>              
+                                    `;
+                            }
+                        }
+                        const myTbody = $('#myTbody');
+                        myTbody.append(dataText);
+
+
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+                    .then(function () {});
+            })
+/*------------------------------------------------------------------------------------------------------------------------------------------*/
+            // areaBtn4 - 離島
+            areaBtn4.click(function () {
+                console.log('areaBtn4');
+                axios.get('./js/190902112139_M4.json')
+                    .then(function (res) {
+                        console.log('res', res);
+                        let data = res.data;
+                        let dataText = '';
+                        data.forEach(myFunction);
+
+                        function myFunction(item, index) {
+                            // console.log(`<p>${item.id}-${item.name}-${item.web}</p><br>`);
+                            if (item.area == '離島') {
+                                dataText += `
+                                    <tr>
+                                        <td>${item.id}</td>
+                                        <td class="text-danger">${item.area}</td>
+                                        <td>${item.name}</td>
+                                        <td class="text-info"><a href="http://${item.web}" class="btn btn-info" role="button">Go</a></td>
+                                    </tr>              
+                                    `;
+                            }
+                        }
+                        const myTbody = $('#myTbody');
+                        myTbody.append(dataText);
+
+
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+                    .then(function () {});
+            })
+/*------------------------------------------------------------------------------------------------------------------------------------------*/
+            // all
             myBtn.click(function () {
-                axios.get("./js/190902112139_M4.json")//使用 axios 抓 API 資料
+                axios.get("./js/190902112139_M4.json")
                     .then(function (res) { //成功後要做的事
 
                         console.log('res',res);
 
                         let data = res.data;
-                        // console.log(data);
-                        // console.log('data[1]', data[0]);
-                        // console.log('data[1]', data[1]);
-
                         let dataText = '';
+
                         data.forEach(myFunction);
-                        // // document.getElementById("demo").innerHTML = text;
                         function myFunction(item, index) {
-                            // console.log(`<p>${item.id}-${item.name}-${item.web}</p><br>`);
                             
                             dataText += `
                                     <tr>
                                         <td>${item.id}</td>
                                         <td class="text-danger">${item.area}</td>
                                         <td>${item.name}</td>
-                                        <td class="text-info">${item.web}</td>
+                                        <td class="text-info"><a href="http://${item.web}" class="btn btn-info" role="button">Go</a></td>
                                     </tr>              
                                     `;
                             }
@@ -120,7 +284,7 @@
 
                     })
             })
-
+/*------------------------------------------------------------------------------------------------------------------------------------------*/
         });
     </script>
 
